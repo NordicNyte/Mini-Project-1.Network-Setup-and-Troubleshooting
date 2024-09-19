@@ -1,2 +1,87 @@
-# Mini-Project-1.Network-Setup-and-Troubleshooting
-Job Interview for a Network Engineer with an Associated Portfolio Project
+# Configuration Guide
+
+## Objective:
+Simply put, a network is composed of interconnected items or devices that interact with each other. In this example, we're creating a network that includes all sorts of devices such as printers, phones, TVs, tablets, PCs, laptops, and servers. In the process, we’ll be enabling these devices to communicate with each other as well as with external networks. This will include assigning IP addresses, configuring subnet masks, as well as implementing hardware ranging from routers, switches, and DNS servers. The primary objective is to dive into the physical backbone of a network and understand how each device engages with the rest of the network.
+
+## Use Cases:
+
+- **Surfing the Web**: When you type a website's domain name into a browser, your computer doesn’t actually search for the name. Rather, it requests the IP address of the website from a DNS server to find the corresponding IP address. Which then is sent back to the browser, and converted to the corresponding webpage on the UI.
+
+- **Gaming on a LAN**: When players cooperatively play on a LAN, each PC is wired into a switch via ethernet cables. This allows for peer-to-peer communication between the computers with low latency (delay in information travel) and enables both PCs to send and receive information such as player position, if items are used, a gun is shot, etc.
+
+- **Transferring a File on a Server**: A device sends a request to a DNS server to retrieve the IP address of a domain name. Once the IP address is found, you can access the server hosting the file or webpage.
+
+- **Accessing another PC/Host from your Laptop**: If you had your personal computer in another room and needed to access your work-based stand-up PC in your main office. You send a request from your own laptop to the work PC, the switch on the network directs your request based on MAC addresses, or ARP (Address Resolution Protocol) if the laptop doesn’t know where the PC is, to find what port the PC is located in. After, a session of continual data is shared between both, allowing you to access your work PC from your laptop.
+
+---
+
+## Steps to Set Up a Network
+
+### Objective:
+Build a network with devices such as laptops, PCs, printers, tablets, and servers. Include web and DNS servers, and enable connectivity within a LAN and to external networks.
+
+### Step 1: Devices
+- Add end devices (laptops, PCs, printers, tablets) and servers (web, DNS).  
+  On Packet Tracer, this can be done by selecting the **End Devices** category on the top row of the bottom-right menu selection, then selecting whichever end device needed from the menu selection to the right of that.  
+  Then drag them onto the network blank space.
+
+- Use a switch for local network connectivity and a router to enable communication between different networks.
+
+- **Repeat** this step again with a separate set of end devices.
+
+### Step 2: Switch Setup
+- Add a switch and connect devices using **Copper-Straight Through** cables.  
+  On Packet Tracer, this can be done by selecting the **Networking Devices** category on the top row of the bottom-right menu selection, then selecting the **Switch** on the row below. After that, pick your needed switch from the menu selection to the right and drag it into the network blank space.
+
+- Connect end devices, making sure to connect them to **FastEthernet** ports rather than **GigEthernet** ports on the switch.
+
+- **Repeat** this step again with the other set of end devices.
+
+### Step 3: Router Setup
+- Add a router, power it on, and connect it to the switch.  
+  In Packet Tracer, select the **Networking Devices** category from the bottom-left corner, then click on the **Routers** subcategory. Choose your desired router from the menu selection on the right and drag it into the network blank space.
+
+- Connect the router to the switch using **Copper-Straight Through Cables**:  
+  Click on the **Connections** tab at the bottom, select **Copper-Straight Through**, then click on the **GigabitEthernet 0/0** port on the router and connect it to an available **FastEthernet** port on the switch.
+
+- **Power on the Router**:  
+  Click the router, navigate to the **Physical** tab, and ensure that the power switch is toggled **ON**.
+
+### Step 4: IP Configuration
+- **Assign IP Addresses to the Router**:
+  - Click on the router, go to the **Config** tab, and then click on the **GigabitEthernet 0/0** interface.
+  - Under the **IP Address** section, assign the router a WAN IP address from the appropriate network, such as **172.16.0.1**.
+  - Enter the **Subnet Mask** as **255.255.255.0** (for a /24 network).
+  - Click **ON** for the interface to enable it.
+
+- **Assign IP Addresses to End Devices**:
+  - For each end device, click on it, navigate to the **Config** tab in Packet Tracer, and select the **FastEthernet 0** interface.
+  - Set the IP address according to your network plan, e.g., **192.168.0.2** to **192.168.0.62** for devices in the **192.168.0.0/26** subnet.
+  - Assign a **Subnet Mask** of **255.255.255.192**.
+
+### Step 5: Default Gateway Configuration
+- **Set the Default Gateway for End Devices**:  
+  For each end device, click on the device in Packet Tracer, go to the **Config** tab, and under the **FastEthernet** section, scroll down to find the **Default Gateway** field.  
+  Set the Default Gateway to the IP address of the router's LAN interface (e.g., **192.168.0.1**).
+
+### Step 6: DNS Server Setup
+- **Add and Configure a DNS Server**:
+  - In Packet Tracer, go to the **End Devices** tab, select a **Server**, and drag it into the workspace.
+  - Click on the server, go to the **Config** tab, and select **DNS** from the left panel.
+  - Enable the DNS service by toggling it on.
+  - Add domain name mappings (e.g., map `example.com` to **192.168.0.10**, which is the IP of the web server).
+
+### Step 7: Testing Connectivity
+
+- **Ping Devices**:
+  - Open the **Desktop** tab of any end device, then open the **Command Prompt**.
+  - Click on the device, navigate to the **Desktop** tab, then click on the **Command Prompt** application on the UI.
+  - Test connectivity by typing `ping [destination IP]` (e.g., `ping 192.168.0.1` to test communication with the router).
+
+- **Test DNS Resolution**:  
+  From the **Command Prompt** of any device, type `ping example.com` (assuming `example.com` is configured in the DNS server) to test DNS name resolution.
+
+- **Use Packet Tracer Simulation**:  
+  On the bottom-right of the UI, look for the **Simulation** button, use that to test all aspects of your network.
+
+---
