@@ -35,7 +35,11 @@ Build a network with devices such as laptops, PCs, printers, tablets, and server
 
 - Connect end devices, making sure to connect them to **FastEthernet** ports rather than **GigEthernet** ports on the switch.
 
+![Alt text for Image 1](./Image%201.png)
+
 - **Repeat** this step again with the other set of end devices.
+
+![Alt text for Image 2](./Image%202.png)
 
 ### Step 3: Router Setup
 - Add a router, power it on, and connect it to the switch.  
@@ -47,6 +51,8 @@ Build a network with devices such as laptops, PCs, printers, tablets, and server
 - **Power on the Router**:  
   Click the router, navigate to the **Physical** tab, and ensure that the power switch is toggled **ON**.
 
+  ![Alt text for Image 3](./Image%203.png)
+
 ### Step 4: IP Configuration
 - **Assign IP Addresses to the Router**:
   - Click on the router, go to the **Config** tab, and then click on the **GigabitEthernet 0/0** interface.
@@ -54,15 +60,21 @@ Build a network with devices such as laptops, PCs, printers, tablets, and server
   - Enter the **Subnet Mask** as **255.255.255.0** (for a /24 network).
   - Click **ON** for the interface to enable it.
 
+![Alt text for Image 4](./Image%204.png)
+
 - **Assign IP Addresses to End Devices**:
   - For each end device, click on it, navigate to the **Config** tab in Packet Tracer, and select the **FastEthernet 0** interface.
   - Set the IP address according to your network plan, e.g., **192.168.0.2** to **192.168.0.62** for devices in the **192.168.0.0/26** subnet.
-  - Assign a **Subnet Mask** of **255.255.255.192**.
+  - Assign a **Subnet Mask**
+ 
+![Alt text for Image 5](./Image%205.png)
 
 ### Step 5: Default Gateway Configuration
 - **Set the Default Gateway for End Devices**:  
   For each end device, click on the device in Packet Tracer, go to the **Config** tab, and under the **FastEthernet** section, scroll down to find the **Default Gateway** field.  
   Set the Default Gateway to the IP address of the router's LAN interface (e.g., **192.168.0.1**).
+
+![Alt text for Image 6](./Image%206.png)
 
 ### Step 6: DNS Server Setup
 - **Add and Configure a DNS Server**:
@@ -83,5 +95,7 @@ Build a network with devices such as laptops, PCs, printers, tablets, and server
 
 - **Use Packet Tracer Simulation**:  
   On the bottom-right of the UI, look for the **Simulation** button, use that to test all aspects of your network.
+
+![Alt text for Image 7](./Image%207.png)
 
 ---
